@@ -8,6 +8,9 @@ COPY requirements.txt ./
 RUN python3 -m pip install --user --no-cache-dir -r requirements.txt
 # Copy entire project into workdir
 COPY . .
+
+EXPOSE 5000
+
 # Run our app
 CMD ["python", "app.py"]
 

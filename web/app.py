@@ -2,11 +2,14 @@ from flask import Flask, jsonify, request
 from flask_restful import Api, Resource
 from pymongo import MongoClient
 import bcrypt
+import os
 
 app = Flask(__name__)
 api = Api(app)
 
-client = MongoClient("mongodb://my_db:27017")
+#client = MongoClient("mongodb://my_db:27017")
+mongoUrl = os.getenv('MONGO_URL', "mongodb://my_db:27017")
+client = MongoClient(mongoUrl)
 db = client.projectDB
 users = db["Users"]
 
